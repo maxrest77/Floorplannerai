@@ -57,11 +57,12 @@ export default function AIInputPanel({ onGenerate, onBack }) {
       // Prepare data for your Colab notebook
       const requestData = createAIRequest(formData);
       
-      // Use your Replit API endpoint
-      const response = await fetch('https://85e5325f-e67d-4c01-b37d-d0ff4cda5d6f-00-3n356wfb1q997.sisko.replit.dev/generate_floor_plan', {
+      // Call your local AI API when Generate Layout is clicked
+      const response = await fetch('http://localhost:5001/generate_floor_plan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(requestData),
         timeout: AI_CONFIG.TIMEOUT
